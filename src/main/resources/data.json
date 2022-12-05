@@ -1,0 +1,30 @@
+[
+  {
+    "id": 0,
+    "name": "张三",
+    "awarded": false,
+    "hasAvatars": false,
+    "avatars": ""
+  },
+  {
+    "id": 1,
+    "name": "李四",
+    "awarded": false,
+    "hasAvatars": true,
+    "avatars": "test1"
+  },
+  {
+    "id": 2,
+    "name": "华五",
+    "awarded": false,
+    "hasAvatars": true,
+    "avatars": "/tes2t/"
+  },
+  {
+    "id": 3,
+    "name": "狗六",
+    "awarded": true,
+    "hasAvatars": false,
+    "avatars": ""
+  }
+]
