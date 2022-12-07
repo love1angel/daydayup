@@ -38,12 +38,18 @@ public class MainController {
 
         flag.setRelease(true);
 
+        Person person = startProgress();
+        if (person == null) {
+            view.setAwardedInfo("all have awarded, pls click reset");
+            return;
+        }
+
         while (flag.getAcquire()) {
-            Person person = startProgress();
+            person = startProgress();
             if (person == null)
                 view.setAwardedInfo("all have awarded, pls click reset");
             else
-                view.setAwardedInfo("正在抽选中:" + person.getName());
+                view.setAwardedInfo("正在抽选中: " + person.getName());
 
             try {
                 Thread.sleep(500);
@@ -71,7 +77,7 @@ public class MainController {
         if (person == null)
             view.setAwardedInfo("all have awarded, pls click reset");
         else {
-            view.setAwardedInfo("中奖者:" + person.getName());
+            view.setAwardedInfo("中奖者: " + person.getName());
             for (int i = 0; i < persons.size(); i++) {
                 if (person.getId() == persons.get(i).getId()) {
                     persons.get(i).setAwarded(true);
@@ -86,10 +92,14 @@ public class MainController {
             if (!persons.get(i).isAwarded())
                 ++cnt;
         }
-        System.out.println("total not awarded:" + cnt);
+        System.out.println("total not awarded: " + cnt);
+        if (cnt == 0) {
+            return null;
+        }
+
         Random r = new Random();
         int idx = r.nextInt(cnt);
-        System.out.println("random:" + idx);
+        System.out.println("random: " + idx);
         // next int no equal to cnt, bound is less, so we should need ++ it
         ++idx;
         for (int i = 0; i < persons.size(); ++i) {
